@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Person from './Person/Person';
-import person from './Person/Person';
 
 class App extends Component {
   state = {
     persons: [
-      { name: "Dima", age: 25 },
-      { name: "Yura", age: 20 },
-      { name: "Kolya", age: 30 }
+      { id: 'jfndsb', name: "Dima", age: 25 },
+      { id: 'wiojin', name: "Yura", age: 20 },
+      { id: '1l6smk', name: "Kolya", age: 30 }
     ],
     showPersons: false
   }
@@ -62,6 +61,7 @@ class App extends Component {
               click={ () => this.deletePersonHandler(index) }
               name={person.name} 
               age={person.age} 
+              key={person.id}
             />
           })}
         </div>
