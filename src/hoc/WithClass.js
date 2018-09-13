@@ -1,0 +1,36 @@
+import React, { Component } from 'react';
+
+// 1 вариант
+// const withClass = (WrappedComponent, className) => {
+//   return (props) => (
+//     <div className={className}>
+//       <WrappedComponent {...props} />
+//     </div>
+//   );
+// };
+
+
+// Anonim class (2 вариант)
+const withClass = (WrappedComponent, className) => {
+  const WithClass = class extends Component {
+    render () {
+      return (
+        <div className={className}>
+          <WrappedComponent
+            ref={this.props.forwardedRef}
+            {...this.props} 
+          />
+        </div>
+      );
+    }
+  }
+
+  return React.forwardRef((props, ref) => {
+    return <WithClass 
+      {...props}
+      forwardedRef={ref}
+    />
+  });
+};
+
+export default withClass;
